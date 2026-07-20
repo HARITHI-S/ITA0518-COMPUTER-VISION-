@@ -1,0 +1,13 @@
+import cv2
+
+img = cv2.imread('/content/Picture3.jpg')
+
+if img is None:
+    print("Error: Could not load image. Please check the path or if the file exists.")
+else:
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    edges = cv2.Canny(gray, 100, 200)
+    cv2.imwrite('Canny_Edges_3rd.jpg', edges)
+    print("Edge-detected image saved as 'Canny_Edges_3rd.jpg'")
+    from google.colab.patches import cv2_imshow
+    cv2_imshow(edges)
